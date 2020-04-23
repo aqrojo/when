@@ -1,7 +1,6 @@
-// import when from '../src/index';
-import when from '../build/index';
+var when = require('../build/index');
 
-const val = 2;
+var val = 2;
 
 test('return second case when it matches', () => {
   expect(

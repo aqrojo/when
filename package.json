@@ -1,14 +1,12 @@
 {
   "name": "@aqrojo/when",
   "version": "1.0.0",
-  "description": "Chainable conditional expression utility",
+  "description": "js pattern matching utility that helps you to write cleaner code",
   "main": "build/index.js",
   "scripts": {
     "build:umd": "webpack",
     "build": "uglifyjs src/index.js -c -m -o build/index.js",
-    "test": "jest",
-    "prepare": "npm run build",
-    "trypublish": "npm publish || true"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,29 +27,8 @@
     "js"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/polyfill": "^7.8.7",
-    "@babel/preset-env": "^7.9.5",
-    "babel-loader": "^8.1.0",
-    "babel-preset-minify": "^0.5.0",
-    "css-loader": "^3.5.2",
-    "file-loader": "^6.0.0",
     "jest": "^25.3.0",
-    "prettier": "^2.0.4",
-    "prettier-webpack-plugin": "^1.2.0",
-    "style-loader": "^1.1.4",
-    "uglify-js": "^3.9.1",
-    "url-loader": "^4.1.0",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "uglify-js": "^3.9.1"
   },
-  "dependencies": {},
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/scripts/testMock.js",
-      "\\.(css|less)$": "<rootDir>/scripts/testMock.js"
-    }
-  }
+  "dependencies": {}
 }

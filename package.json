@@ -1,6 +1,6 @@
 {
   "name": "@aqrojo/when",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "js pattern matching utility that helps you to write cleaner code",
   "main": "build/index.js",
   "scripts": {

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1587600745685" clover="3.2.0">
+  <project timestamp="1587600745685" name="All files">
+    <metrics statements="1" coveredstatements="1" conditionals="8" coveredconditionals="8" methods="4" coveredmethods="4" elements="13" coveredelements="13" complexity="0" loc="1" ncloc="1" packages="1" files="1" classes="1"/>
+    <file name="index.js" path="/home/runner/work/when/when/build/index.js">
+      <metrics statements="1" coveredstatements="1" conditionals="8" coveredconditionals="8" methods="4" coveredmethods="4"/>
+      <line num="1" count="11" type="cond" truecount="8" falsecount="0"/>
+    </file>
+  </project>
+</coverage>

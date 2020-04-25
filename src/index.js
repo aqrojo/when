@@ -1,17 +1,18 @@
-module.exports = (function() {
-  var result = false;
-  var fn = function() {};
+export default (function() {
+  let result = false;
+  const fn = function() {};
 
-  fn.prototype.case = function(x, pred) {
+  fn.prototype.case = function(x, value) {
     if (result) return this;
-    if (x) result = pred;
+    if (x) result = value;
     return this;
   };
 
-  fn.prototype.resolve = function(pred) {
-    var value = result || pred || false;
+  fn.prototype.resolve = function() {
+    const value = arguments.length > 0 ? arguments[0] : false
+    const returned = result !== false ? result : value
     result = false;
-    return typeof value === 'function' ? value() : value;
+    return typeof returned === 'function' ? returned() : returned;
   };
 
   return new fn();

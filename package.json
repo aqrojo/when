@@ -1,23 +1,17 @@
 {
   "name": "@aqrojo/when",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "js pattern matching utility that helps you to write cleaner code",
-  "main": "build/index.js",
-  "scripts": {
-    "build:umd": "webpack",
-    "build": "uglifyjs src/index.js -c -m -o build/index.js",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aqrojo/when"
-  },
   "author": "Agustin Quintanilla <aqrojo@oneclick.es> (https://github.com/aqrojo)",
   "license": "MIT",
+  "homepage": "https://github.com/aqrojo/when",
+  "source": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
   "bugs": {
     "url": "https://github.com/aqrojo/when/issues"
   },
-  "homepage": "https://github.com/aqrojo/when",
   "keywords": [
     "utility",
     "clean code",
@@ -26,9 +20,17 @@
     "conditional",
     "js"
   ],
+  "scripts": {
+    "build": "microbundle",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aqrojo/when"
+  },
   "devDependencies": {
     "jest": "^25.3.0",
-    "uglify-js": "^3.9.1"
+    "microbundle": "^0.11.0"
   },
   "dependencies": {}
 }

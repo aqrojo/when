@@ -1,4 +1,4 @@
-var when = require('../build/index');
+var when = require('../dist/index');
 
 var val = 2;
 
@@ -49,3 +49,34 @@ test('resolve can return a default value if there is not a matching case', () =>
       .resolve(() => 'there is not a matching case'),
   ).toBe('there is not a matching case');
 });
+
+describe('using with init()', () => {
+  var w = when.init({ debug: true });
+
+  test('w and when are different instances', () => {
+    when.case(1 === 1, () => 'true from when');
+    w.case(1 === 1, () => 'true from instance');
+
+    expect(w.matchedCase).toBe(1);
+    expect(w.resolve() !== when.resolve()).toBeTruthy();
+  });
+
+  test('instance works as expected when match a case', () => {
+    w
+      .case(val === 1, 'the value is 1')
+      .case(val === 2, 'the value is 2');
+
+    expect(w.matchedCase).toBe(2);
+    expect(w.resolve('the value does not match any case')).toBe('the value is 2');
+  });
+
+  test('instance works as expected when not match a case', () => {
+    expect(
+      w
+        .case(val === 5, 'the value is 5')
+        .case(val === 6, 'the value is 6')
+        .resolve('the value does not match any case'),
+    ).toBe('the value does not match any case');
+  });
+});
+

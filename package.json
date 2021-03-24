@@ -1,6 +1,6 @@
 {
   "name": "@aqrojo/when",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "js pattern matching utility that helps you to write cleaner code",
   "author": "Agustin Quintanilla <aqrojo@oneclick.es> (https://github.com/aqrojo)",
   "license": "MIT",

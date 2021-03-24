@@ -1,15 +1,9 @@
 export default (function() {
-  const fn = function({ debug = false, unique = false } = {}) {
+  const fn = function({ debug = false } = {}) {
     this.result = false;
     this.caseCounter = 0;
     this.matchedCase = null;
-    this.unique = unique;
     this.debug = debug;
-  };
-
-  fn.prototype.init = function({ debug = false } = {}) {
-    console.log('se crea nueva instancia');
-    return new fn({ debug, unique: true });
   };
 
   fn.prototype.reset = function() {
@@ -19,14 +13,13 @@ export default (function() {
   };
 
   fn.prototype.case = function(x, value) {
-    const instance = fn.unique ? fn : fn.init({debug: fn.debug})
-    instance.caseCounter += 1;
-    if (instance.result) return instance;
+    this.caseCounter += 1;
+    if (this.result) return this;
     if (x) {
-      instance.result = value;
-      instance.matchedCase = instance.caseCounter;
+      this.result = value;
+      this.matchedCase = this.caseCounter;
     }
-    return instance;
+    return this;
   };
 
   fn.prototype.trace = function() {
@@ -44,5 +37,5 @@ export default (function() {
     return typeof returned === 'function' ? returned() : returned;
   };
 
-  return new fn({})
+  return (props) => new fn(props)
 })();

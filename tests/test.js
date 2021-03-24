@@ -4,7 +4,7 @@ var val = 2;
 
 test('return second case when it matches', () => {
   expect(
-    when
+    when()
       .case(val === 1, 'the value is 1')
       .case(val === 2, 'the value is 2')
       .resolve('the value does not match any case'),
@@ -12,12 +12,12 @@ test('return second case when it matches', () => {
 });
 
 test('by calling resolve twice, it returns false', () => {
-  expect(when.resolve()).toBeFalsy();
+  expect(when().resolve()).toBeFalsy();
 });
 
 test('when can also use functions', () => {
   expect(
-    when
+    when()
       .case(val === 1, () => 'it returns 1')
       .case(val === 2, () => 'it returns 2')
       .resolve(),
@@ -25,58 +25,27 @@ test('when can also use functions', () => {
 });
 
 test('it can be resolved later', () => {
-  when
+  const instance = when()
     .case(val === 1, () => 'it returns 1')
     .case(val === 2, () => 'it returns 2');
 
-  expect(when.resolve()).toBe('it returns 2');
+  expect(instance.resolve()).toBe('it returns 2');
 });
 
 test('if no case matches, it returns false', () => {
-  when
+  const instance = when()
     .case(val === 1, () => 'it returns 1')
     .case(val === 10, () => 'it returns 10');
 
-  expect(when.resolve()).toBeFalsy();
+  expect(instance.resolve()).toBeFalsy();
 });
 
 test('resolve can return a default value if there is not a matching case', () => {
   expect(
-    when
+    when()
       .case(val === 1, () => 'val matches the first case')
       .case(val === 10, () => 'val matches the second case')
       .case(val === 20, () => 'val matches the third case')
       .resolve(() => 'there is not a matching case'),
   ).toBe('there is not a matching case');
 });
-
-describe('using with init()', () => {
-  var w = when.init({ debug: true });
-
-  test('w and when are different instances', () => {
-    when.case(1 === 1, () => 'true from when');
-    w.case(1 === 1, () => 'true from instance');
-
-    expect(w.matchedCase).toBe(1);
-    expect(w.resolve() !== when.resolve()).toBeTruthy();
-  });
-
-  test('instance works as expected when match a case', () => {
-    w
-      .case(val === 1, 'the value is 1')
-      .case(val === 2, 'the value is 2');
-
-    expect(w.matchedCase).toBe(2);
-    expect(w.resolve('the value does not match any case')).toBe('the value is 2');
-  });
-
-  test('instance works as expected when not match a case', () => {
-    expect(
-      w
-        .case(val === 5, 'the value is 5')
-        .case(val === 6, 'the value is 6')
-        .resolve('the value does not match any case'),
-    ).toBe('the value does not match any case');
-  });
-});
-

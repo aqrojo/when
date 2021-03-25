@@ -30,9 +30,7 @@
   },
   "devDependencies": {
     "jest": "^25.3.0",
-    "microbundle": "^0.12.3"
+    "microbundle": "^0.13.0"
   },
-  "dependencies": {
-    "serialize-javascript": "^4.0.0"
-  }
+  "dependencies": {}
 }

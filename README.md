@@ -19,7 +19,7 @@ const login = (user, password) =>
 That's the motivation to write `when`, a tiny helper (only 179 bytes gzip), inspired in pattern matching strategies of other programming languages 
 ```
 const login = (user, password) => 
-   when
+   when()
     .case(!user, () => 'Fill the user name plz')
     .case(!password, () => 'Fill the password plz')
     .case(user !== adminUser.name, () => `There's not a registered user with the name ${name}`)
@@ -44,7 +44,7 @@ const value = 2
 
 // begin the chain using the when helper
 // and concat all the cases you want to check
-const result = when
+const result = when()
     .case(value === 1, `it's 1`)
     .case(value === 2, `it's 2`)
     .case(value > 1, `it's greater than 1`)
@@ -55,33 +55,31 @@ console.log(result) // it's 2
 ```
 `when` will return only the first math, so in the example the `value > 1` case, was ignored
 
-The `when` instance holds an internal value that can be a function or any other value 
+The `when` function holds an internal value that can be a function or any other value 
  
  It executes the evaluation at the moment the resolve method is invoked and after that, it cleans itself
 ```
 cosnt value = 2
 
-console.log(
-    when
-        .case(value = 1, `it's 1`)
-        .case(value = 2, `it's 2`)
-) // fn {}
+const w = when()
+    .case(value = 1, `it's 1`)
+    .case(value = 2, `it's 2`)
+
 
 // you can resolve it later
 console.log (
-    when
-        .resolve(`it's recommended the use of a default value`)
+    w.resolve(`it's recommended the use of a default value`)
 ) // it's 2
 
 // if you try to resolve it again 
 // and it hasn't a default value
 // it returns false
-console.log(when.resolve()) // false
+console.log(w.resolve()) // false
 
 ```
 ### Api
 #### `when`
-All begins with `when` and you can chain as many cases as you need 
+All begins with `when` function, and you can chain as many cases as you need 
 
 #### `case`
 It's a `when` method that accepts two parameters
